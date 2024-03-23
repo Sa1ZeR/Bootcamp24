@@ -18,4 +18,11 @@ class TimeUtilsTest {
             assertEquals(27, localDateTime.getDayOfMonth());
         });
     }
+
+    @Test
+    void getDurationString() {
+        long duration = 391;
+
+        assertEquals("00:06:31", TimeUtils.getDurationString(duration));
+    }
 }

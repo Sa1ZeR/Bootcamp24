@@ -14,24 +14,11 @@ import java.util.Date;
 @UtilityClass
 public class TimeUtils {
 
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-    private static final SimpleDateFormat sdfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-
-    public static LocalDateTime parseTimeFromString(String s) throws ParseException {
-        return sdf.parse(s).toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime();
-    }
-
-    public static String LocalDateTimeToString(LocalDateTime time) {
-        return sdfs.format(Date.from(time.atZone(ZoneId.systemDefault()).toInstant()));
-    }
-
-    public static String LocalDateTimeToCdr(LocalDateTime time) {
-        return sdf.format(Date.from(time.atZone(ZoneId.systemDefault()).toInstant()));
-    }
-
+    /**
+     * Преобразовывает промежуток времени в формат hh:mm:ss
+     * @param duration время в секундах
+     * @return формат вывода промежутка времени hh:mm:ss
+     */
     public static String getDurationString(long duration) {
         long diffSeconds = duration % 60;
         long diffMinutes = duration / 60 % 60;

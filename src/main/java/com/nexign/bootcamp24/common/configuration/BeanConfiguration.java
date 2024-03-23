@@ -8,7 +8,6 @@ import java.util.Random;
 /**
  * Данный класс служит неким конфигуратором для бинов
  */
-
 @Configuration
 public class BeanConfiguration {
 

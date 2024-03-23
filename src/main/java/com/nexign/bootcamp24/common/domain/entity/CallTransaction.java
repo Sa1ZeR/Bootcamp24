@@ -2,10 +2,7 @@ package com.nexign.bootcamp24.common.domain.entity;
 
 import com.nexign.bootcamp24.common.domain.enums.CallType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(exclude = {"id", "customer"})
 @Table(name = "call_transaction")
 public class CallTransaction {
 
