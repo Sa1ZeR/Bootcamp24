@@ -66,8 +66,13 @@ public class CallTransactionService {
     public void saveAll(Collection<CallTransaction> transactions) {
         repo.saveAll(transactions);
     }
+
     @Transactional
     public void deleteAll() {
         repo.deleteAll();
+    }
+
+    public List<CallTransaction> findAll() {
+        return repo.findAll();
     }
 }

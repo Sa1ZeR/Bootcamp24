@@ -68,9 +68,14 @@ public class CustomerService {
     public void saveAll(Collection<Customer> customers) {
         customerRepo.saveAll(customers);
     }
-
+    @Transactional
     public void deleteAll() {
         customerRepo.deleteAll();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Customer> findAll() {
+        return customerRepo.findAll();
     }
 
 }
