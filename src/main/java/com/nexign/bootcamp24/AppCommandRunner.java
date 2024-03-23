@@ -36,14 +36,14 @@ public class AppCommandRunner implements CommandLineRunner {
                                 throw new IllegalArgumentException("Arguments not valid, for example: java -jar <fileName.jar> reportMod 1 <phoneNumber>");
 
                             cdrFacade.cdrStart();
-                            reportGenerator.generateReport(args[i] + 2);
+                            reportGenerator.generateReport(args[i + 2]);
                         }
                         case 2 -> {
                             if(args.length < 4)
                                 throw new IllegalArgumentException("Arguments not valid, for example: java -jar <fileName.jar> reportMod 2 <phoneNumber> <month>");
 
                             cdrFacade.cdrStart();
-                            reportGenerator.generateReport(args[i] + 2, Integer.parseInt(args[i] + 3));
+                            reportGenerator.generateReport(args[i + 2], Integer.parseInt(args[i + 3]));
                         }
                     }
                 } catch (NumberFormatException e) {

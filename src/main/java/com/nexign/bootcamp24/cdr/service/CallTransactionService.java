@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -36,8 +33,11 @@ public class CallTransactionService {
 
         LocalDateTime startDate = LocalDateTime.of(2024, 1, 1, 0, 0); //начинаем создавать данные с начала года
 
-        int transactionCount = customers.size() * 75;
+        int transactionCount = customers.size() * 95;
         for(int i = 0; i < transactionCount; i++) {
+            if(startDate.getYear() == 2025)
+                startDate = LocalDateTime.of(2024, 1, 1, 0, 0);; //если вышли за пределы одного года, обновляем дату
+
             //генерируем рандомные данные для cdr записи
             CallType callType = CallType.values()[random.nextInt(2)];
             Customer customer = customerList.get(random.nextInt(customerList.size()));
@@ -55,6 +55,9 @@ public class CallTransactionService {
         }
 
         log.info("Call Transaction data successfully generated");
+
+        //отсортируем в хронологическом порядке
+        data.sort(Comparator.comparing(CallTransaction::getDateStart));
 
         return data;
     }
